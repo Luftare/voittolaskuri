@@ -57,9 +57,10 @@ function update() {
         const shareSellCost = sellTransaction.value / sellTransaction.count;
         const transactionWithinRange = sellTransaction.date.isBetween(start, end);
 
+        const sellResult = toSellCount * (sharePurchaseCost + shareSellCost);
+        sellTransaction.result += sellResult;
+
         if (transactionWithinRange) {
-          const sellResult = toSellCount * (sharePurchaseCost + shareSellCost);
-          sellTransaction.result += sellResult;
           result += sellResult;
         }
       }
