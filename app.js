@@ -34,10 +34,9 @@ function getTimeRange() {
   }
 }
 
-function getProfitAtRange() {
+function update() {
   const { start, end } = getTimeRange();
   const transactions = decodeInputString();
-
 
   const purchaseTransactions = transactions.filter(t => t.purchase);
   const sellTransactions = transactions.filter(t => !t.purchase);
@@ -96,9 +95,6 @@ function getProfitAtRange() {
     </table>
     <p><span style="color: ${result < 0 ? 'red' : 'green'};font-weight: bold;">${resultPrefix}</span> välillä ${start.format('DD.MM.YYYY')} - ${end.format('DD.MM.YYYY')}: <b>${formatCurrency(result)} €</b></p>
   `;
-}
 
-function update() {
-  getProfitAtRange();
+  window.scrollBy(0, 500);
 }
-
